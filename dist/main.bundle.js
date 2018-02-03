@@ -194,7 +194,7 @@ var AppModule = (function () {
 /***/ "../../../../../src/app/hero-dialog/hero-dialog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1 mat-dialog-title>Information about {{hero.attributes.name}}</h1>\n<mat-dialog-content class=\"hero-dialog\">\n  Information about hero\n</mat-dialog-content>\n<mat-dialog-actions>\n  <button mat-button mat-dialog-close>OK</button>\n</mat-dialog-actions>\n"
+module.exports = "<h1 mat-dialog-title>Information about {{hero.attributes.name}}</h1>\n<mat-dialog-content style=\"background-repeat: no-repeat; background-size: auto;\" [ngStyle]=\"{'background-image': 'url(' + hero.attributes.image_splash + ')'}\" class=\"hero-dialog\">\n  Information about hero\n</mat-dialog-content>\n<mat-dialog-actions>\n  <button mat-button mat-dialog-close>OK</button>\n</mat-dialog-actions>\n"
 
 /***/ }),
 
@@ -206,7 +206,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".hero-dialog {\n  width: 600px;\n  height: 400px; }\n", ""]);
+exports.push([module.i, ".hero-dialog {\n  width: 800px;\n  height: 500px; }\n", ""]);
 
 // exports
 
