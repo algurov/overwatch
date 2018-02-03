@@ -5,8 +5,18 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class DataService extends HttpService{
 
-  testApi(): Observable<any> {
-    return this.http.get('/api/users', this.getOptions());
+  lock = false;
+
+
+  hero(page): Observable<any> {
+    return this.http.get('/api/heroes?page=' + page, this.getOptions());
   }
 
+  lockUi() {
+    this.lock = true;
+  }
+
+  unlockUi() {
+    this.lock = false;
+  }
 }

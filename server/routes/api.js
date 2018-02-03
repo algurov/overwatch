@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const https = require('https');
+var url = require('url');
 
 
 
@@ -19,8 +20,11 @@ var response = {
 };
 
 // Get users
-router.get('/users', function(req, res) {
-  https.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY', function (resp) {
+router.get('/heroes', function(req, res) {
+  var url_parts = url.parse(req.url, true);
+  var query = url_parts.query;
+  var page = req.query.page;
+  https.get('https://dojo-madness-challenge.herokuapp.com/api/heroes?page=' + page + '&perPage=5', function (resp) {
     var data = '';
 
     // A chunk of data has been recieved.

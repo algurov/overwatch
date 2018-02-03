@@ -5,8 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class HttpService {
 
   public httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })// ,
-    // withCredentials: true
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }) ,
+     withCredentials: true
   }
 
   constructor(public http: HttpClient) { }

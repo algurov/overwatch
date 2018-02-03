@@ -1,1 +1,5 @@
+<div class="spinner" *ngIf="dataService? dataService.lock : false">
+  <mat-spinner class="circle"  [strokeWidth]="2" [diameter]="50"></mat-spinner>
+</div>
+
 <router-outlet></router-outlet>

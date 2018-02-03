@@ -1,4 +1,16 @@
-<p>
-  main works!
-</p>
-<button mat-button (click)="test()">Button</button>
+<mat-toolbar color="primary">
+  Overwatch Hero List
+</mat-toolbar>
+<div>
+  <mat-form-field class="search-field">
+    <mat-placeholder>Search</mat-placeholder>
+    <input matInput [value]="filterString" (keyup)="changeFilterString($event)"/>
+  </mat-form-field>
+
+  <div class="infinite-scroll" appInfiniteScroller scrollPerecnt="70" [immediateCallback]="true" [scrollCallback]="scrollCallback">
+    <div *ngFor="let hero of heroes | search:filterString">
+      <app-hero  [hero]="hero"></app-hero>
+    </div>
+  </div>
+</div>
+
