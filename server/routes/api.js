@@ -42,6 +42,3 @@ router.get('/heroes', function(req, res) {
 
 
 module.exports = router;
-
-// insert into hero (name, image, back_image) values ('Soldier: 76', 'https://oversumo-stage.s3-eu-west-1.amazonaws.com/uploads/hero/image_portrait/soldier_76/portrait.png', 'https://oversumo-stage.s3-eu-west-1.amazonaws.com/uploads/hero/image_splash/soldier_76/splash.jpg'),
-//   ('Sombra', 'https://oversumo-stage.s3-eu-west-1.amazonaws.com/uploads/hero/image_portrait/sombra/portrait.png', 'https://oversumo-stage.s3-eu-west-1.amazonaws.com/uploads/hero/image_splash/sombra/splash.jpg');
