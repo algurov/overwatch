@@ -31,8 +31,8 @@ router.get('/heroes', function(req, res) {
   var url_parts = url.parse(req.url, true);
   var query = url_parts.query;
   var page = req.query.page;
-  client.query('SELECT * from hero OFFSET' + page * 5 +'  LIMIT 5;', (err, result) => {
-    console.log(result)
+  var q = 'SELECT * from hero OFFSET ' + (page * 5) +'  LIMIT 5;';
+  client.query(q, (err, result) => {
   if (result) {
     res.json(result);
   }
@@ -42,3 +42,6 @@ router.get('/heroes', function(req, res) {
 
 
 module.exports = router;
+
+// insert into hero (name, image, back_image) values ('Soldier: 76', 'https://oversumo-stage.s3-eu-west-1.amazonaws.com/uploads/hero/image_portrait/soldier_76/portrait.png', 'https://oversumo-stage.s3-eu-west-1.amazonaws.com/uploads/hero/image_splash/soldier_76/splash.jpg'),
+//   ('Sombra', 'https://oversumo-stage.s3-eu-west-1.amazonaws.com/uploads/hero/image_portrait/sombra/portrait.png', 'https://oversumo-stage.s3-eu-west-1.amazonaws.com/uploads/hero/image_splash/sombra/splash.jpg');
