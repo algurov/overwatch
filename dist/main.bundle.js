@@ -194,7 +194,7 @@ var AppModule = (function () {
 /***/ "../../../../../src/app/hero-dialog/hero-dialog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1 mat-dialog-title>Information about {{hero.attributes.name}}</h1>\n<mat-dialog-content style=\"background-repeat: no-repeat; background-size: auto;\" [ngStyle]=\"{'background-image': 'url(' + hero.attributes.image_splash + ')'}\" class=\"hero-dialog\">\n  Information about hero\n</mat-dialog-content>\n<mat-dialog-actions>\n  <button mat-button mat-dialog-close>OK</button>\n</mat-dialog-actions>\n"
+module.exports = "<h1 mat-dialog-title>Information about {{hero.name}}</h1>\n<mat-dialog-content style=\"background-repeat: no-repeat; background-size: auto;\" [ngStyle]=\"{'background-image': 'url(' + hero.back_image + ')'}\" class=\"hero-dialog\">\n  Information about hero\n</mat-dialog-content>\n<mat-dialog-actions>\n  <button mat-button mat-dialog-close>OK</button>\n</mat-dialog-actions>\n"
 
 /***/ }),
 
@@ -264,7 +264,7 @@ var HeroDialogComponent = (function () {
 /***/ "../../../../../src/app/hero/hero.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card *ngIf=\"hero\" class=\"card\">\n  <mat-card-header>\n    <mat-card-title>{{hero.attributes.name}}</mat-card-title>\n  </mat-card-header>\n  <img mat-card-image [src]=\"hero.attributes.image_portrait\" alt=\"Image\">\n  <mat-card-actions>\n    <button mat-button (click)=\"openDialog()\">View</button>\n  </mat-card-actions>\n</mat-card>\n"
+module.exports = "<mat-card *ngIf=\"hero\" class=\"card\">\n  <mat-card-header>\n    <mat-card-title>{{hero.name}}</mat-card-title>\n  </mat-card-header>\n  <img mat-card-image [src]=\"hero.image\" alt=\"Image\">\n  <mat-card-actions>\n    <button mat-button (click)=\"openDialog()\">View</button>\n  </mat-card-actions>\n</mat-card>\n"
 
 /***/ }),
 
@@ -501,9 +501,13 @@ var MainComponent = (function () {
         this.needToLoad = true;
         this.processData = function (heroes) {
             _this.currentPage++;
-            var _json = JSON.parse(heroes);
+            //let _json = JSON.parse(heroes);
             var lengthBefore = _this.heroes.length;
-            _this.heroes = _this.heroes.concat(_json.results.items);
+            heroes.rows.forEach(function (item) {
+                if (!_this.heroes.find(function (it) { return it.hero_id === item.hero_id; })) {
+                    _this.heroes.push(item);
+                }
+            });
             var lengthAfter = _this.heroes.length;
             if (lengthAfter === lengthBefore) {
                 _this.needToLoad = false;
@@ -612,7 +616,7 @@ var SearchPipe = (function () {
         if (!items || !filter) {
             return items;
         }
-        return items.filter(function (item) { return item.attributes.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1; });
+        return items.filter(function (item) { return item.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1; });
     };
     SearchPipe = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* Pipe */])({

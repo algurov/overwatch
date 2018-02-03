@@ -1,8 +1,8 @@
 <mat-card *ngIf="hero" class="card">
   <mat-card-header>
-    <mat-card-title>{{hero.attributes.name}}</mat-card-title>
+    <mat-card-title>{{hero.name}}</mat-card-title>
   </mat-card-header>
-  <img mat-card-image [src]="hero.attributes.image_portrait" alt="Image">
+  <img mat-card-image [src]="hero.image" alt="Image">
   <mat-card-actions>
     <button mat-button (click)="openDialog()">View</button>
   </mat-card-actions>

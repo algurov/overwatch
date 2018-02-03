@@ -28,9 +28,14 @@ export class MainComponent implements OnInit {
 
   private processData = (heroes) => {
     this.currentPage++;
-    let _json = JSON.parse(heroes);
+    //let _json = JSON.parse(heroes);
     let lengthBefore = this.heroes.length;
-    this.heroes = this.heroes.concat(_json.results.items);
+    heroes.rows.forEach(item => {
+      if (!this.heroes.find(it => it.hero_id === item.hero_id)) {
+        this.heroes.push(item);
+      }
+
+    });
     let lengthAfter = this.heroes.length;
     if (lengthAfter === lengthBefore) {
       this.needToLoad = false;
